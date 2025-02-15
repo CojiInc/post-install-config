@@ -4,61 +4,81 @@
 <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
 </p>
 
-## osTicket - Post-Install Configuration
-This section covers the post-installation configuration steps to set up osTicket for help desk operations.
+## Overview
+This guide outlines the post-installation configuration steps for osTicket, ensuring the help desk system is properly set up for use.
 
 ### Video Demonstration
-- [YouTube: How To Configure osTicket, post-installation](https://www.youtube.com)
+- [YouTube: How To Configure osTicket, Post-Installation](https://www.youtube.com)
 
-## Post-Install Configuration Objectives
-- Change SysAdmins Department to a Top-Level Department
-- Delete the Maintenance Department (not archive)
-- Configure ticket properties for different requests
-- Work tickets to completion as different agents
+## Environment and Technologies Used
+- **Microsoft Azure** (Virtual Machines/Compute)
+- **Remote Desktop**
+- **Internet Information Services (IIS)**
+- **Windows 10 (21H2)**
 
-## Configuration Steps
-### 1. Logging In
+## Post-Installation Configuration Steps
+
+### 1. Accessing osTicket
 - **Admin/Analyst Login Page**: [http://localhost/osTicket/scp/login.php](http://localhost/osTicket/scp/login.php)
 - **End Users osTicket URL**: [http://localhost/osTicket](http://localhost/osTicket)
+- Acknowledge the difference between the **Agent Panel** (ticket handling) and **Admin Panel** (system management).
 
-### 2. Create and Manage Tickets
-#### Ticket 1: Online Banking System Down
-- Create a ticket as an end-user: `Entire mobile/online banking system is down`
-- As Agent (John), observe ticket properties and set:
-  - **Priority:** Sev-A (1 hour, 24/7)
-  - **Department:** Online Banking Department
-- Check ticket access after assignment
-- Work ticket to completion as Jane
+### 2. Configure User Roles and Permissions
+- **Roles (Permissions Groups)**  
+  - Navigate to: `Admin Panel → Agents → Roles`
+  - Create `Supreme Admin` role for full control.
 
-#### Ticket 2: Adobe Upgrade Issue
-- Create a ticket: `Accounting department needs Adobe upgrade, broken`
-- As Agent (John), set:
-  - **Priority:** Sev-B (4 hours, 24/7)
-  - **Department:** Support
-- Work ticket to completion as John
+- **Departments (Ticket Visibility & Management)**  
+  - Navigate to: `Admin Panel → Agents → Departments`
+  - Create `SysAdmins` department.
 
-#### Ticket 3: CFO’s Laptop Won’t Turn On
-- Create a ticket: `CFO’s laptop will no longer turn on`
-- As Agent (John), set:
-  - **Priority:** Sev-B (4 hours, 24/7)
-  - **Department:** Support
-- Work ticket to completion as John
+- **Teams (Cross-Department Collaboration)**  
+  - Navigate to: `Admin Panel → Agents → Teams`
+  - Create `Online Banking` team with agents from different departments.
 
-### 3. Ticket Escalation and Permissions
-- Set Properties to all tickets; observe SysAdmins ticket becomes inaccessible
-- Assign yourself view-access to SysAdmins department in **Admin Panel**
-- Switch back to Agent Panel and observe changes
+### 3. Configuring Ticket Handling Settings
+- **Allow Anyone to Create Tickets**  
+  - Navigate to: `Admin Panel → Settings → User Settings`
+  - **Uncheck** "Unregistered users can create tickets" to restrict access.
+  - Enable "Registration Required" to require users to log in before creating tickets.
 
-### 4. Ticketing System Best Practices
-- Explain how email notifications work in most ticketing systems
-- Discuss ticket intake methods (phone, chat, email, web form, etc.)
-- Stress importance of logging all issues for tracking and metrics
+- **Add Agents (Help Desk Staff)**  
+  - Navigate to: `Admin Panel → Agents → Add New`
+  - Create:
+    - **Jane** (Department: SysAdmins)
+    - **John** (Department: Support)
 
-## Conclusion
-- Encourage further exploration of osTicket’s features
-- Recommend repeating the lab to build confidence and intuition
-- Reinforce the importance of technical proficiency through repeated practice
+- **Add Users (End-Users/Customers)**  
+  - Navigate to: `Agent Panel → Users → Add New`
+  - Create:
+    - **Karen**
+    - **Ken**
 
-## Congratulations! 🎉
-Your osTicket helpdesk is now successfully configured!
+### 4. Service Level Agreements (SLAs)
+- Navigate to: `Admin Panel → Manage → SLA`
+- Set up SLAs for response times:
+  - **Sev-A** (Grace Period: 1 hour, Schedule: 24/7)
+  - **Sev-B** (Grace Period: 4 hours, Schedule: 24/7)
+  - **Sev-C** (Grace Period: 8 hours, Business Hours)
+
+### 5. Configure Help Topics  
+- Navigate to: `Admin Panel → Manage → Help Topics`
+- Add help topics for users to categorize their issues:
+  - **Business Critical Outage**
+  - **Personal Computer Issues**
+  - **Equipment Request**
+  - **Password Reset**
+  - **Other**
+
+---
+
+## Final Steps & Best Practices
+- **Test Ticket Creation & Assignment**
+- **Explore Email Notifications for Ticket Updates**
+- **Understand Ticket Intake Methods** (Phone, Chat, Web, Email)
+- **Practice Working Tickets to Completion**
+- **Repeat the Lab to Build Confidence**
+
+## 🎉 Congratulations!
+Your osTicket system is now fully configured and ready for use! 🚀
 
